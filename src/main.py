@@ -2,16 +2,16 @@ import tkinter as tk
 from tkinter import ttk
 import json
 import os
-from XTTSClient import XTTSClient
+from TTSClient import TTSClient
 from OllamaChecker import OllamaChecker
 
 class ChatApplication:
     def __init__(self, root):
         self.root = root
-        self.root.title("XTTS Chat")
+        self.root.title("Windows TTS Chat")
         self.root.geometry("800x600")
         self.setup_ui()
-        self.xtts_client = XTTSClient("http://localhost:8020")
+        self.tts_client = TTSClient()
         
     def setup_ui(self):
         # Chat display
@@ -33,7 +33,10 @@ class ChatApplication:
         if message:
             self.input_field.delete(0, tk.END)
             self.add_message("You", message)
-            self.xtts_client.synthesize(message)
+            # Get AI response from Ollama
+            response = "This is a test response"
+            self.add_message("Assistant", response)
+            self.tts_client.synthesize(response)
             
     def add_message(self, sender, message):
         self.chat_display.configure(state='normal')
