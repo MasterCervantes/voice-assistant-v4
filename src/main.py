@@ -33,7 +33,6 @@ class ChatApplication:
         if message:
             self.input_field.delete(0, tk.END)
             self.add_message("You", message)
-            # This would trigger the AI response and XTTS
             self.xtts_client.synthesize(message)
             
     def add_message(self, sender, message):
