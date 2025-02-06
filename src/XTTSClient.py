@@ -19,7 +19,6 @@ class XTTSClient:
                 output_file = "output.wav"
                 with open(output_file, 'wb') as f:
                     f.write(audio_data)
-                print(f"Audio synthesis successful, output saved to {output_file}")
                 winsound.PlaySound(output_file, winsound.SND_FILENAME)
             else:
                 print(f"Error: {response.status_code} - {response.text}")
